@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+      crossorigin="anonymous"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  </head>
+  <body>
+    <div id="app" class="container mt-5">
+      <h3>{{ title }}</h3>
+      <p :id="id">
+        {{ description }}
+      </p>
+      <a :href="link"> VideoSinif</a>
+      <div v-html="parag"></div>
+      <div>{{ list }}</div>
+      <div>{{ obj }}</div>
+    </div>
+
+    <script>
+      new Vue({
+        el: "#app",
+        data: {
+          id: "wo_12323",
+          title: "Vue.js Eğitimi",
+          description: "insider kodluyoruz...",
+          link: "https://www.videosinif.com",
+          parag: "<b>Test123</b> <p>lorem ipsum dolor sit amet</p>",
+          list: [1, 2, 34, 5],
+          obj: { name: "String" }
+        }
+      });
+    </script>
+  </body>
+</html>

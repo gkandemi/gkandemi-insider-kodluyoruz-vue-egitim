@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+      crossorigin="anonymous"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  </head>
+  <body>
+    <div id="app" class="container mt-5">
+      <div class="row">
+        <div class="col-6">
+          <h3>{{ counter }}</h3>
+          <button class="btn btn-primary" @click="counter++">+</button>
+          <button class="btn btn-danger" @click="counter--">-</button>
+          <p>{{ getCounterResponse }}</p>
+        </div>
+        <div class="col-6">
+          <h3>{{ counter2 }}</h3>
+          <button class="btn btn-primary" @click="counter2++">+</button>
+          <button class="btn btn-danger" @click="counter2--">-</button>
+          <p>{{ getCounterResponse2 }}</p>
+        </div>
+
+        <h3>{{ getStateStatus }}</h3>
+        <div class="col-6">
+          {{ state1 }} {{ state2 }} {{ state3 }}
+          <button @click="state1=true">1</button>
+          <button @click="state2=true">2</button>
+          <button @click="state3=true">3</button>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      new Vue({
+        el: "#app",
+        data: {
+          counter: 0,
+          counter2: 0,
+          state1: false,
+          state2: false,
+          state3: false
+        },
+        methods: {},
+        computed: {
+          getCounterResponse() {
+            console.log("Counter 1 Calisti...");
+            return this.counter < 10
+              ? "10'dan küçüktür. Counter"
+              : "Büyüktür yada eşittir..";
+          },
+          getCounterResponse2() {
+            console.log("Counter 2 Calisti...");
+            return this.counter2 < 10
+              ? "10'dan küçüktür. Counter"
+              : "Büyüktür yada eşittir..";
+          },
+          getStateStatus() {
+            return this.state1 && this.state2 && this.state3;
+          }
+        },
+        watch: {
+          counter(newValue, oldValue) {
+            console.log("New", newValue);
+            console.log("Old", oldValue);
+          },
+          getStateStatus(val) {
+            console.log("Value", val);
+          }
+        }
+      });
+    </script>
+  </body>
+</html>

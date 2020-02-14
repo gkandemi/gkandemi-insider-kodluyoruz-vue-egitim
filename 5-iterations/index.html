@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+      crossorigin="anonymous"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  </head>
+  <body>
+    <div id="app" class="container mt-5">
+      <input
+        type="text"
+        class="form-control mb-2"
+        v-model="new_person"
+        @keydown.enter="addNewPerson()"
+      />
+      <ul class="list-group">
+        <li
+          v-for="(person, i) in person_list"
+          class="list-group-item d-flex justify-content-between align-items-center"
+        >
+          <span>
+            #{{i + 1}} - {{ person }}
+          </span>
+          <button class="btn btn-sm btn-danger" @click="deletePerson(person)">
+            X
+          </button>
+        </li>
+      </ul>
+      <small v-if="person_list.length > 0">
+        Toplamda <b>{{ getPersonCount() }}</b> kayıt vardır
+      </small>
+      <small v-else> Herhangi bir kayıt yoktur.. </small>
+    </div>
+
+    <script>
+      new Vue({
+        el: "#app",
+        data: {
+          new_person: "",
+          person_list: []
+        },
+        methods: {
+          addNewPerson() {
+            this.person_list.push(this.new_person);
+            this.new_person = "";
+          },
+          deletePerson(person) {
+            this.person_list.splice(this.person_list.indexOf(person), 1);
+          },
+          getPersonCount() {
+            //....
+            //...
+            return this.person_list.length;
+          }
+        }
+      });
+    </script>
+  </body>
+</html>

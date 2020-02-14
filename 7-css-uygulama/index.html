@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+      crossorigin="anonymous"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  </head>
+  <body>
+    <div id="app" class="container mt-5">
+      <ul class="list-group w-50">
+        <li
+          v-for="product in products"
+          class="list-group-item d-flex justify-content-between align-items-center"
+        >
+          <span>{{ product.title }} ({{ product.count }})</span>
+          <small v-if="product.count < product.quantity" class="text-danger"
+            >Girdiğiniz miktar stok adetinden fazladır..</small
+          >
+          <div>
+            <input
+              type="text"
+              v-model="product.quantity"
+              style="width: 50px;"
+            />
+            <button
+              :disabled="product.count < product.quantity"
+              class="btn btn-sm btn-primary"
+              @click="sellProduct(product)"
+            >
+              Satın Al
+            </button>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <script>
+      new Vue({
+        el: "#app",
+        data: {
+          products: [
+            { id: 1, count: 10, title: "Elma", quantity: 0 },
+            { id: 2, count: 5, title: "Armut", quantity: 0 },
+            { id: 3, count: 2, title: "Kiraz", quantity: 0 },
+            { id: 4, count: 4, title: "Karpuz", quantity: 0 },
+            { id: 5, count: 20, title: "Muz", quantity: 0 }
+          ]
+        },
+        methods: {
+          sellProduct(product) {
+            product.count = product.count - product.quantity;
+          }
+        }
+      });
+    </script>
+  </body>
+</html>

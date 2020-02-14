@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+      crossorigin="anonymous"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  </head>
+  <body>
+    <div id="app" class="container mt-5">
+      <p>{{ counter }}</p>
+      <button class="btn btn-sm btn-primary" @click="counter++">+</button>
+      <button class="btn btn-sm btn-warning" @click="counter--">-</button>
+      <p v-if="counter >= 10">
+        Counter 10'dan büyüktür.. Counter Değeri {{ counter }}
+      </p>
+      <p v-else-if="counter < 10 && counter > 0">
+        Counter 10'dan küçüktür.. Counter Değeri {{ counter }}
+      </p>
+      <p v-else>
+        Counter Negatif Sayıdır.... Counter Değeri {{ counter }}
+      </p>
+    </div>
+
+    <script>
+      new Vue({
+        el: "#app",
+        data: {
+          counter: 0
+        },
+        methods: {}
+      });
+    </script>
+  </body>
+</html>
